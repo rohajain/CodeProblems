@@ -1,0 +1,34 @@
+public class Solution {
+    // DO NOT MODIFY THE LIST. IT IS READ ONLY
+    public int majorityElement(final List<Integer> A) {
+        
+        int n = (int)Math.floor(A.size()/2);
+        
+        //System.out.println(n);
+        
+        Collections.sort(A);
+        
+        int count = 0, ele = A.get(0),max=0,num =-1;
+        
+        for(int i =0 ;i < A.size();i++)
+        {
+            if(A.get(i) == ele)
+            {
+                count ++;
+                if((count > n) && (count > max))
+                  {
+                      max =count;
+                      num = A.get(i);
+                  }
+            }
+            else
+            {
+               count =1;
+               ele = A.get(i);
+            }
+            
+        }
+        
+        return num;
+    }
+}

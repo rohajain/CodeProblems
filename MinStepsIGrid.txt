@@ -1,0 +1,31 @@
+public class Solution {
+    
+
+    public int coverPoints(ArrayList<Integer> A, ArrayList<Integer> B) {
+    
+        int min_steps = 0;    
+        for (int i=0;i<A.size()-1;i++)
+        {
+            //System.out.println(A.get(i));
+            int dx = A.get(i+1) - A.get(i);
+            if(dx <0)
+            {
+                dx= dx*(-1);
+            }
+            int dy = B.get(i+1) - B.get(i);
+            if(dy <0)
+            {
+                dy= dy*(-1);
+            }
+            if(dx>dy)
+            {
+                min_steps += dx;
+            }
+            else
+            {
+                min_steps += dy;
+            }
+        }
+        return(min_steps);
+    }
+}

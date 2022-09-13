@@ -1,0 +1,71 @@
+https://leetcode.com/problems/find-the-duplicate-number/
+https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/
+https://leetcode.com/articles/product-of-array-except-self/#
+https://leetcode.com/problems/diameter-of-binary-tree/
+https://www.javaworld.com/article/2077424/learn-java-does-java-pass-by-reference-or-pass-by-value.html
+
+
+Remember
+n XOR n = 0
+n XOR 0 = n
+
+
+constraints
+1. Cannot modify list
+2. O(1) auxilliary space
+3. < O(n2) time
+4. duplicate element is one only and can be present n times in array (this condition makes the second solution fail)
+
+
+Best Solution(1)
+// This is the best solution possible till now(floyd's hare and tortoise problem, two pointer algorithm)
+
+class Solution {
+    public int findDuplicate(int[] nums) {
+        
+        int tortoise = nums[0];
+        int hare = nums[0];
+        do {
+            tortoise = nums[tortoise];
+            hare = nums[nums[hare]];
+        } while (tortoise != hare);
+            
+		tortoise = nums[0];
+        while (tortoise != hare) {
+            tortoise = nums[tortoise];
+            hare = nums[hare];
+        }
+
+        return tortoise;
+    }
+}
+
+// This will work only in case there are atmost 2 duplicate elements and not more then 2.
+
+
+
+ final int n = a.size() - 1;
+	    // int[] A = new int[a.size()];
+	    int x = 0;
+	    for (int i = 1; i <= n; i++) {
+	        x = x ^ i;
+	    }
+	    for (int e : a) {
+	        x = x ^ e;
+	    }
+	    if (x == 0) return -1;
+	    else return x;
+
+Best Solution(2)
+		
+  int value=0,i;
+        final int n = nums.length;
+        
+        for(i=1;i<n;i++)
+            value ^= i;
+        
+        for(i=0;i<n;i++)
+            value ^= nums[i];
+        
+        
+        return value;

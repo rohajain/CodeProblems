@@ -1,0 +1,54 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package testproject1;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author rohajain
+ */
+public class TestProject1 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        Scanner in = new Scanner(System.in);
+        String S;
+        System.out.println("Enter an String");
+        S = in.nextLine();
+        int checker =0;
+        boolean flag = true;
+        
+        for (int i = 0 ; i < S.length();i++)
+        {
+              int index = S.charAt(i) - 'a';
+              
+              
+              if((checker &(1<<index)) > 0 )
+              {
+                  flag = false;
+                  break;
+              }
+              
+              checker |= (1 << index);
+        }
+        
+        
+        if(flag == true)
+        {
+            System.out.println("String contains unique characters");
+            
+        }
+        else
+        {
+            System.out.println("String does not contain unique characters");
+        }
+    }
+    
+}
